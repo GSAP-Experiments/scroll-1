@@ -32,4 +32,4 @@ You should only have one `h1` per page, so I replaced the two `h1`s inside a `di
 
 The hero image section can use some work. On bigger devices the text is really far down because of the `100vh` and center alignment you went with. I would either change the height to be `66vw` (to keep the correct aspect ratio of the image) or remove the`align-items: center` and just do a `margin-top` to make sure it's far enough down that it's not over the top of the navigation.
 
-Speaking of navigation, there needs to be a lot of work done on it for smaller screen sizes, since it's being pushed off the right edge and the overflow is hidden.
+Are you using this as a learning tool for the JS library that's doing the animations? I ask because I'm pretty sure you can achieve the same thing with CSS animations instead.
