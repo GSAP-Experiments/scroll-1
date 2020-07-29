@@ -179,7 +179,7 @@ li + li{
 
 /* HTML elements should have content, empty elemnts should be avoided. I replaced the underline div with the following: */
 
-.heading-wrapper + .heading-wrapper {
+.hero__heading + .hero__heading {
     border-top: 6px solid white;
 }
 

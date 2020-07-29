@@ -16,12 +16,13 @@ Here is a list of the changed made and the reasons for them.
 - Added a `.navigation a` selector to remove the link underline from the nav
 - Changed the hero image background properties to one `backgorund` property to show you how you can do it in one line
 - Added the light colour variable to the `.heading-wrapper` to make sure it can be seen on the dark image
-- Replaced the `.hero-heading-underline` with a `boarder-top` on the second `.heading-wrapper`. Empty elements should be avoided (unless being populated by JS later)
+- Replaced the `.hero-heading-underline` with a `boarder-top` on the second `.hero__heading`. Empty elements should be avoided (unless being populated by JS later)
 
 ## HTML File
 
 - Removed the `span` used to make the underline
+- Changed the `.heading-wrapper` to a `h1` and each line is a `div`
 
 ## Other Thoughts
 
-You should only have one `h1` per page, so I would suggest replacing the `hero__content` with one `h1` and two inner `div`s. I didn't make the change here because I didn't know what it would do to your JS.
+You should only have one `h1` per page, so I replaced the two `h1`s inside a `div` to two `div`s inside an `h1`.
