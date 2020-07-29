@@ -88,7 +88,9 @@ h3 { font-size: 2.5rem } /* 2.5rem = 40px */
 .wrapper-flex{
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 250px);
+    align-items: center;
+    /* on smaller screen sizes this makes the nav break */
+    /* width: calc(100% - 250px); */
     /*max-width: 1200px;*/
     margin: 0 auto;
 }
@@ -101,20 +103,25 @@ h3 { font-size: 2.5rem } /* 2.5rem = 40px */
 .navigation{
     color: var(--text-light);
     position: fixed;
-    width: 100%;
+    /* changed width so the nav is still visible on smaller screens */
+    width: 93%;
     top: 4.6875rem; /* 4.6875rem = 75px */
 }
 
-.navigation__list{
+.navigation__list {
     display: flex;
+    justify-content: space-evenly;
+    padding: 0;
 }
 
-li + li{
-    margin-left: 1.875rem; /* 1.875rem = 30px */
+/* added this to give each nav item some breathing room, because 30px padding was too much */
+
+.navigation__list li {
+    margin: 0.25rem 0.5rem;
 }
 
-.logo-wrapper{
-
+li + li {
+    /*margin-left: 1.875rem; /* 1.875rem = 30px */
 }
 
 .logo{
@@ -143,7 +150,7 @@ li + li{
     /*opacity: 0;*/
 }
 
-.hero{
+.hero {
     width: 100%;
     height: 100vh;
     position: relative;
