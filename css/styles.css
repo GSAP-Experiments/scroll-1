@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap');
 
+/* Good job using descriptive names for your colours instead of "white" or "dark-grey"! */
 :root{
     --offset-dark: #2E3322;
     --offset-light: #444B33;
@@ -13,42 +14,51 @@
 *,
 *::before,
 *::after {
-    padding: 0;
-    margin: 0;
+    /* You shouldn't set padding/margin in the global selector. It'll change literally everything. This specifically messes with lists, but heading margins disappear, too. */
+    /* padding: 0;
+    margin: 0; */
     box-sizing: inherit;
 }
 
 html {
     box-sizing: border-box;
-    font-size: 16px;
+    /* I changed this to 1rem because I prefer to use relative instead of absolute units */
+    font-size: 1rem;
 }
 
 body {
-    color: #FFFFFF;
-    overflow-x: hidden;
+    /* changed it from #ffff to the text color variable. */
+    color: var(--text-dark);
+    /* overflow-x: hidden; can cause problems if your content goes past the body container. It's better to just not use explicit height on elements that don't need them. This will prevent overflow from happening */
     line-height: 1.4;
 }
 
-h1, h2, h3, p, a{
-    color: var(--text-light);
+h1, h2, h3, p, a {
+    /* I removed the colour here because it's already present in the `body` tag just above. */
 }
 
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
     text-transform: capitalize;
-    font-weight: 100 !important;
+    /* Never use `!important` unless absolutely necessary. Also, the font weight on Googel Font doesn't go any smaller than 400 */
+    /* font-weight: 100 !important; */
     line-height: 0.84;
 }
 
-p, a{
+p, a {
     font-family: 'Open Sans', sans-serif;
-    letter-spacing: -0.7px;
+    /* Because there weren't any paragraphs, I added a few to see how the letter spacing looked. It's too tight, so I removed it. */
+    /* letter-spacing: -0.7px; */
 }
 
-a{
-    text-decoration: none;
+a {
+    /* Removing text-decoration from links is bad practice, because nothing else says "click me, I'm a link!" visually like an underline. Even uppercase words don't have the same meaning. It's fine for nav links, since people are used to nav items being links. But this is a global style that affects all links on the page, not just the header links.  */
+    /* text-decoration: none; */
     text-transform: capitalize;
 }
+
+/* added to make sure all links are coloured according to the surrounding text */
+a, a:visited { color: inherit; }
 
 ul{
     list-style: none;
@@ -59,7 +69,7 @@ ul{
 
 
 /* ==============TYPOGRAPHY================== */
-h1 { font-size: 14.25rem; } /* 14.25rem = 228px */
+h1 { font-size: 14vw; } /* Set to a viewport unit so it takes up as much as possible of the width of the page without overflowing */
 h2 { font-size: 5.3125rem; } /* 5.3125rem = 85px */
 h3 { font-size: 2.5rem } /* 2.5rem = 40px */
 
@@ -89,6 +99,7 @@ h3 { font-size: 2.5rem } /* 2.5rem = 40px */
 
 /* ==============NAVIGATION================== */
 .navigation{
+    color: var(--text-light);
     position: fixed;
     width: 100%;
     top: 4.6875rem; /* 4.6875rem = 75px */
@@ -98,7 +109,7 @@ h3 { font-size: 2.5rem } /* 2.5rem = 40px */
     display: flex;
 }
 
-li +li{
+li + li{
     margin-left: 1.875rem; /* 1.875rem = 30px */
 }
 
@@ -110,6 +121,9 @@ li +li{
     letter-spacing: 3px;
     font-size: 1.875rem; /* 1.875rem = 30px */
 }
+
+/* added to remove the underline from the links, as discussed above */
+.navigation a { text-decoration: none; }
 
 /* ==============END NAVIGATION================== */
 
@@ -139,10 +153,12 @@ li +li{
     justify-content: center;
     align-items: center;
 
-    background-image: url("../images/bg-hero.jpg");
+    /* added this background property to show you how you can do it all on one line */
+    background: url("../images/bg-hero.jpg") center/cover no-repeat;
+    /* background-image: url("../images/bg-hero.jpg");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;
+    background-size: cover; */
 }
 
 .hero__content{
@@ -154,12 +170,20 @@ li +li{
 }
 
 .heading-wrapper{
+    /* because we only needed the white text on the dark image, I added the colour here and it will cascade down to all text elements in this div */
+    color: var(--text-light);
     overflow: hidden;
     /*border:1px solid red;*/
     height: max-content;
 }
 
-.hero-heading-underline{
+/* HTML elements should have content, empty elemnts should be avoided. I replaced the underline div with the following: */
+
+.heading-wrapper + .heading-wrapper {
+    border-top: 6px solid white;
+}
+
+/* .hero-heading-underline{
     width: 100%;
     height: 6px;
     background-color: var(--text-light);
@@ -168,5 +192,5 @@ li +li{
     top: 50%;
     transform: translate(-50%, 89%);
     transform-origin: 0% 0%;
-}
+} */
 /* ==============END HERO================== */
